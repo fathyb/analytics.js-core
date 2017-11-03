@@ -74,7 +74,7 @@ module.exports = function(config) {
 
     retryLimit: 3,
 
-    reporters: ['progress', 'junit'],
+    reporters: ['spec', 'junit'],
 
     browsers: ['PhantomJS'].concat(Object.keys(customLaunchers)),
 

@@ -31,6 +31,8 @@ describe('cookie', function() {
           return;
         }
       }
+      // Logging increases the chances of this test passing.
+      console.log(cookie.get('x'));
       // Run a final assertion. Using assert here so we can print a helpful
       // error message.
       assert.deepEqual(cookie.get('x'), { a: 'b' });
@@ -53,6 +55,8 @@ describe('cookie', function() {
           return;
         }
       }
+      // Logging increases the chances of this test passing.
+      console.log(cookie.get('x'));
       // Run a final assertion. Using assert here so we can print a helpful
       // error message.
       assert.deepEqual(cookie.get('x'), { a: 'b' });

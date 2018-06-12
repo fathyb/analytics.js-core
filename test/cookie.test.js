@@ -34,7 +34,9 @@ describe('cookie', function() {
 
   describe('#set', function() {
     it('should set a cookie', function() {
-      cookie.set('x', { a: 'b' });
+      console.log('Setting test cookie', document.cookie)
+  
+      assert(cookie.set('x', { a: 'b' }) === true)
       assert.deepEqual(cookie.get('x'), { a: 'b' });
     });
   });

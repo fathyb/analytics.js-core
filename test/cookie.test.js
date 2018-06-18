@@ -4,7 +4,7 @@ var assert = require('proclaim');
 var cookie = require('../lib').constructor.cookie;
 
 describe('cookie', function() {
-  before(function() {
+  beforeEach(function() {
     // Just to make sure that
     // URIError is never thrown here.
     document.cookie = 'bad=%';
@@ -34,9 +34,7 @@ describe('cookie', function() {
 
   describe('#set', function() {
     it('should set a cookie', function() {
-      console.log('Setting test cookie before', document.cookie)
       assert(cookie.set('x', { a: 'b' }) === true)
-      console.log('Setting test cookie after', document.cookie)
   
       assert.deepEqual(cookie.get('x'), { a: 'b' });
     });

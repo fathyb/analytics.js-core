@@ -12,24 +12,25 @@ defaults:
         key: yarn-dependency-cache-{{ checksum "yarn.lock" }}
         paths:
           - node_modules
-
+  run_tests: &run_tests
+    - run: make test
+    - store_test_results:
+        path: junit-reports
+  run_coverage: &run_coverage
+    - run: yarn run karma start karma.conf.coverage.js
+    - store_test_results:
+        path: junit-reports
+    - run: yarn run codecov
 version: 2
 jobs:
   test:
     <<: *env
     steps:
-      <<: *install
-      - run: make test
-      - store_test_results:
-          path: junit-reports
+      <<: [*install, *run_tests]
   coverage:
     <<: *env
     steps:
-      <<: *install
-      - run: yarn run karma start karma.conf.coverage.js
-      - store_test_results:
-          path: junit-reports
-      - run: yarn run codecov
+      <<: [*install, *run_coverage]
   publish:
     <<: *env
     steps:

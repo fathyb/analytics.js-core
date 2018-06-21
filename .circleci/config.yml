@@ -26,11 +26,13 @@ jobs:
   test:
     <<: *env
     steps:
-      <<: [*install, *run_tests]
+      - *install
+      - *run_tests
   coverage:
     <<: *env
     steps:
-      <<: [*install, *run_coverage]
+      - *install
+      - *run_coverage
   publish:
     <<: *env
     steps:
